@@ -1,4 +1,5 @@
 
+# To be able to Code Sign Business Central App file you need to have Business Central install on same computer. (navsip.dll)
 function Get-CodeSignMyApps {
     Param(
         #AppFolder need to end with "\"
