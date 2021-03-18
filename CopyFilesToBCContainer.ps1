@@ -9,11 +9,11 @@ function CopyFilesToBCContainer()
         $ContainerName  
     )
 
-    $temp = Get-ChildItem -Path $DownloadFolder -Recurse 
+    $temp = Get-ChildItem -Path $LocalPath -Recurse 
 
     foreach ( $suffix in $temp ) {
         $name = $suffix.Name
-        $file = "$DownloadFolder\$name"
+        $file = "$LocalPath\$name"
         try {
                 
                 Copy-FileToBcContainer -containerName $ContainerName -localPath $file -containerPath "$ContainerPath\$name"
