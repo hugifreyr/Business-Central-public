@@ -3,7 +3,7 @@
 function CopyFilesToBCContainer()
 {
     Param(
-        $LocalPath = "C:\Users\hugife\Downloads\XMLfiles\",
+        $LocalPath = "C:\BC\XMLfiles\",
         $ContainerPath = "C:\Run\XMLfiles\",
         [parameter(Mandatory = $true)]
         $ContainerName  
