@@ -6,6 +6,7 @@ function Get-BCDevInstallLicense ()
     #License files to use in if else statement below
     $BC14License = "E:\License\BC14.flf"
     $BC17License = "E:\License\BC17.flf"
+    $BC18License = "E:\License\BC18.flf"
 
     #Define name of containers that script should ignore
     $ignoreList = "magical_cannon", "portainer"
@@ -23,6 +24,9 @@ function Get-BCDevInstallLicense ()
                 }
                 elseif ($version -like "17.*") {
                     Import-BcContainerLicense -containerName $tmp -licenseFile $BC17License  
+                }
+                elseif ($version -like "18.*") {
+                    Import-BcContainerLicense -containerName $tmp -licenseFile $BC18License  
                 }
                 else {
                     Write-Output "Version not defined in script..."
