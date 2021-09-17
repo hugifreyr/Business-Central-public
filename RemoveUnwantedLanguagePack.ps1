@@ -6,18 +6,21 @@ function Get-RemoveUnwantedLanguagePack {
         $containerName
     )
     
-    $apps = Get-BcContainerAppInfo -containerName $containerName | Select-Object name 
+    $apps = Get-BcContainerAppInfo -containerName $containerName | Select-Object name | Sort-Object name
 
-    $ignoreList = 'United States', 'Icelandic'
+    $ignoreList = 'English language (United States)', 'Icelandic language (Iceland)'
 
     foreach ( $tmp in $apps) {
-        if ($ignoreList | ? { $tmp.Name.ToString() -notmatch $_ }) {
-            if ('language' | ? { $tmp.Name.ToString() -match $_ }) {
-                
+        $appName = $tmp.Name.ToString()
+
+        if ($ignoreList -inotcontains $appName ) {
+            if ('language' | Where-Object { $appName -match $_ }) {
                 #Write-Output $tmp.Name.ToString()
                 UnPublish-BcContainerApp -containerName $containerName -name $tmp.Name.ToString()
             }
         }
+        
     }
 }
+
 
