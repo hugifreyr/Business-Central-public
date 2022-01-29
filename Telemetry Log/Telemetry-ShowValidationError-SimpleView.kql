@@ -1,3 +1,9 @@
  traces  | where customDimensions.validationRequestId == '10139275-e29f-4f5a-b886-a017b1b422f2' 
             and customDimensions.severity == 'Error'
          | project timestamp , customDimensions.validationRequestId , customDimensions.severity, customDimensions.diagnosticCode, customDimensions.diagnosticMessage, customDimensions.extensionName , customDimensions.extensionVersion ,customDimensions.eventId ,customDimensions.diagnosticSourcePath , customDimensions.diagnosticSourceLocation
+
+
+
+
+traces | where message contains "Dependent extension installed successfully:" and customDimensions.aadTenantId != "common" and customDimensions.aadTenantId != "default"
+| project timestamp, message, client_CountryOrRegion, appId, appName, customDimensions.aadTenantId, customDimensions.component, customDimensions.componentVersion, customDimensions.environmentName, customDimensions.environmentType, customDimensions.eventId, customDimensions.extensionId, customDimensions.extensionName, customDimensions.extensionPublisher, customDimensions.extensionVersion
