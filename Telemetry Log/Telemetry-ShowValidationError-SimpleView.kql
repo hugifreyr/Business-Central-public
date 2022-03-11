@@ -5,5 +5,25 @@
 
 
 
-traces | where message contains "Dependent extension installed successfully:" and customDimensions.aadTenantId != "common" and customDimensions.aadTenantId != "default"
+traces | filter timestamp >= datetime(2022-01-01 01:00:00Z)
+ | where message contains "Dependent extension installed successfully:" and customDimensions.aadTenantId != "common" and customDimensions.aadTenantId != "default"
 | project timestamp, message, client_CountryOrRegion, appId, appName, customDimensions.aadTenantId, customDimensions.component, customDimensions.componentVersion, customDimensions.environmentName, customDimensions.environmentType, customDimensions.eventId, customDimensions.extensionId, customDimensions.extensionName, customDimensions.extensionPublisher, customDimensions.extensionVersion
+
+
+// http://www.mynavblog.com/2021/09/03/get-more-insights-into-how-users-use-your-app-pageviews/
+
+
+// https://docs.microsoft.com/en-us/azure/azure-monitor/app/export-power-bi
+
+
+
+
+traces | where customDimensions contains "companyname"
+//| project  message , sum()
+| summarize Count=count() by message
+
+
+
+traces | where customDimensions contains "Fagkaup" and message startswith "Database lock snapshot:" 
+//| project timestamp, message, customDimensions
+| summarize Count=count() by startofday(timestamp)//, tostring(customDimensions.eventId),  tostring(customDimensions.alObjectId)
