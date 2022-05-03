@@ -1,3 +1,7 @@
+
+# BCContainerHelper release notes
+# https://github.com/microsoft/navcontainerhelper/blob/master/ReleaseNotes.txt
+
 function Get-UpdateBcContainerHelper() {   
     Param(
         $ModuleName = "bccontainerhelper",
