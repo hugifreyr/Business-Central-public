@@ -2,7 +2,7 @@
 
 function Get-StatusOnLatestBCArtifactURLs {   
     Param(
-        $Version = "20",
+        $Version = "21",
         $Country = "IS"
     )
 

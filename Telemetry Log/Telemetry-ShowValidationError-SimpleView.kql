@@ -1,3 +1,17 @@
+ 
+
+pageViews
+//| where url == "https://businesscentral.dynamics.com/82aa0304-a0c2-41f7-b31b-94ce7aa65902/gooryggi"
+| where customDimensions.appName contains "Advania"
+| summarize Count=count() by tostring(customDimensions.appName), url
+
+//pageViews
+//| where customDimensions.alObjectId == "10008820"
+//| summarize Count=count() by url
+ 
+ 
+ 
+ 
  traces  | where customDimensions.validationRequestId == '10139275-e29f-4f5a-b886-a017b1b422f2' 
             and customDimensions.severity == 'Error'
          | project timestamp , customDimensions.validationRequestId , customDimensions.severity, customDimensions.diagnosticCode, customDimensions.diagnosticMessage, customDimensions.extensionName , customDimensions.extensionVersion ,customDimensions.eventId ,customDimensions.diagnosticSourcePath , customDimensions.diagnosticSourceLocation
@@ -16,6 +30,20 @@ traces | filter timestamp >= datetime(2022-01-01 01:00:00Z)
 // https://docs.microsoft.com/en-us/azure/azure-monitor/app/export-power-bi
 
 
+"Database lock timed out"
+"Operation exceeded time threshold (SQL query)"
+"Database lock snapshot: a77d7e2a-5b83-46fa-8f58-cf9fb69107a5"
+"Operation exceeded time threshold (AL method)"
+
+traces | where customDimensions contains "Sorpa" and customDimensions.environmentName == "Production" and message == "Operation exceeded time threshold (AL method)"
+//| project timestamp, customDimensions.alObjectName , customDimensions.executionTime
+| summarize Count=count() by startofday(timestamp), tostring(customDimensions.alObjectName)
+
+traces | where customDimensions.companyName == "Rekstrarvörur" and customDimensions.environmentType == "Production" 
+and ( message contains "Database lock snapshot:" or message == "Operation exceeded time threshold (AL method)" or message == "Database lock timed out" or message == "Operation exceeded time threshold (SQL query)" )
+ //and message == "Operation exceeded time threshold (AL method)"
+| summarize Count=count() by startofday(timestamp), tostring(message)
+//| summarize Count=count() by message
 
 
 traces | where customDimensions contains "companyname"
@@ -27,3 +55,17 @@ traces | where customDimensions contains "companyname"
 traces | where customDimensions contains "Fagkaup" and message startswith "Database lock snapshot:" 
 //| project timestamp, message, customDimensions
 | summarize Count=count() by startofday(timestamp)//, tostring(customDimensions.eventId),  tostring(customDimensions.alObjectId)
+
+
+
+
+
+pageViews 
+//where customDimensions.appName == "Advania Payroll" //and customDimensions.companyName == "Fjardarkaup"
+//and 
+//| where customDimensions.refUri contains "fjardarkaup" and url contains "lscentral"
+| where customDimensions.appPublisher == "Advania"
+| summarize count() by tostring(customDimensions.appName), Date = startofmonth(timestamp),tostring(customDimensions.companyName) , tostring(customDimensions.refUri)
+
+
+
