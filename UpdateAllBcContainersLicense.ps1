@@ -11,6 +11,7 @@ function Get-BCDevInstallLicense ()
     $BC18License = "E:\License\BC18.flf"
     $BC19License = "E:\License\BC19.flf"
     $BC20License = "E:\License\BC20.flf"
+    $BC20License = "E:\License\BC21.flf"
 
     #Define name of containers that script should ignore
     $ignoreList = "magical_cannon", "portainer"
@@ -37,6 +38,9 @@ function Get-BCDevInstallLicense ()
                 }
                 elseif ($version -like "20.*") {
                     Import-BcContainerLicense -containerName $tmp -licenseFile $BC20License  
+                }
+                elseif ($version -like "21.*") {
+                    Import-BcContainerLicense -containerName $tmp -licenseFile $BC21License  
                 }
                 else {
                     Write-Output "Version not defined in script..."

@@ -10,7 +10,7 @@ function Get-CodeSignMyApps {
         $SignToolFolder = "C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool"
         ,
         [String]
-        $PfxFilePath = "C:\BC\AdvCodeSigning2022.pfx"
+        $PfxFilePath = "C:\BC\AdvCodeSigning2025.pfx"
         ,
         [parameter(Mandatory = $true)]
         [securestring]
