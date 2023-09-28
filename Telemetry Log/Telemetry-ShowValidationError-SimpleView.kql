@@ -1,4 +1,26 @@
  
+traces | where customDimensions.eventId == "RT0010"
+traces | where customDimensions.eventId == "AL0000EJ9"
+
+traces | where ( customDimensions.eventId == "LC0020" 
+or customDimensions.eventId == "LC0021"
+or customDimensions.eventId == "LC0014"
+or customDimensions.eventId == "LC0015"
+or customDimensions.eventId == "LC0018"
+or customDimensions.eventId == "LC0019"
+or customDimensions.eventId == "LC0012"
+or customDimensions.eventId == "LC0013"
+or customDimensions.eventId == "LC0056"
+or customDimensions.eventId == "LC0010"
+or customDimensions.eventId == "LC0026"
+or customDimensions.eventId == "LC0011"
+or customDimensions.eventId == "LC0016"
+or customDimensions.eventId == "LC0027"
+or customDimensions.eventId == "LC0017"
+or customDimensions.eventId == "LC0022"
+or customDimensions.eventId == "LC0023" ) and customDimensions.aadTenantId == "a14684ca-ec53-4709-9d5f-f8fb347ac38e"
+
+
 
 pageViews
 //| where url == "https://businesscentral.dynamics.com/82aa0304-a0c2-41f7-b31b-94ce7aa65902/gooryggi"

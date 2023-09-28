@@ -11,12 +11,14 @@ function Get-BCDevInstallLicense ()
     $BC18License = "E:\License\BC18.flf"
     $BC19License = "E:\License\BC19.flf"
     $BC20License = "E:\License\BC20.flf"
-    $BC20License = "E:\License\BC21.flf"
+    $BC21License = "E:\License\BC21.flf"
 
     #Define name of containers that script should ignore
     $ignoreList = "magical_cannon", "portainer"
 
     $Containers = docker ps -a --format "{{.Names}}" --filter status=running 
+    # TODO switch to Get-BcContainers
+
     foreach ( $tmp in $Containers) {
         if ( $ignoreList -inotcontains $tmp) {
             try {

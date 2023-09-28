@@ -4,13 +4,13 @@ function Get-CodeSignMyApps {
     Param(
         #AppFolder need to end with "\"
         [String]
-        $AppFolder = "C:\BC\CodeSigning\"
+        $AppFolder = "C:\Users\hugife\OneDrive - Advania\BC\CodeSigning\"
         ,
         [String]
         $SignToolFolder = "C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool"
         ,
         [String]
-        $PfxFilePath = "C:\BC\AdvCodeSigning2025.pfx"
+        $PfxFilePath = "C:\Users\hugife\OneDrive - Advania\BC\AdvCodeSigning2025.pfx"
         ,
         [parameter(Mandatory = $true)]
         [securestring]
