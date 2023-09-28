@@ -21,7 +21,7 @@ $accessToken = $client.AcquireTokenInteractive($scopes).ExecuteAsync().GetAwaite
 $GlobalResourceGroupName = "" #NEEDS TO BE UPDATED
 $GlobalStorageAccName = "" #NEEDS TO BE UPDATED
 #Storage account -> SAS -> Blob service SAS URL
-$GlobalSasUrl = "https://businesscentraldevbackup.blob.core.windows.net/...." #NEEDS TO BE UPDATED
+$GlobalSasUrl = "https://something.blob.core.windows.net/...." #NEEDS TO BE UPDATED
 $GlobalBlobContainerName = "" #NEEDS TO BE UPDATED
 
 #From BC admin center
