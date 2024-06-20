@@ -2,8 +2,8 @@
 
 function Get-StatusOnLatestBCArtifactURLs {   
     Param(
-        $Version = "22",
-        $Country = "IS"
+        $Version = "23",
+        $Country = "UK"
     )
 
     Write-Output "Business Central $Version $Country "

@@ -1,4 +1,20 @@
- 
+
+//Somi
+traces | where customDimensions.aadTenantId == "f0777eb7-6d61-4238-843f-2476c32c0dfc"
+| summarize count() by tostring(message)
+
+
+
+traces | where customDimensions.eventId == "ALADVPR0001" and customDimensions.alalCallerAppVersion startswith "23" and customDimensions.companyName != "CRONUS IS" and customDimensions.environmentType == "Production"
+| summarize count() by tostring(customDimensions.aadTenantId), tostring(customDimensions.companyName)
+
+| project timestamp, message,customDimensions.alenvironmentName,customDimensions.aadTenantId,customDimensions.companyName,customDimensions.extensionName, customDimensions.environmentType
+,customDimensions.alnoEmployeesInPostedBatchLine, customDimensions.alalCallerAppVersion
+
+
+
+
+
 traces | where customDimensions.eventId == "RT0010"
 traces | where customDimensions.eventId == "AL0000EJ9"
 
